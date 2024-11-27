@@ -1,26 +1,31 @@
 # DeepURLBench Dataset
 
-This repository contains the dataset **DeepURLBench** for the paper:  
-**"A New Dataset and Methodology for Malicious URL Classification"**  
-by Deep Instinct's Research Team.
+This repository contains the dataset **DeepURLBench**, introduced in the paper **"A New Dataset and Methodology for Malicious URL Classification"** by Deep Instinct's research team.
 
----
+## Dataset Overview
 
-## Dataset Description
+The repository includes two parquet directories:
 
-The repository includes two directories in Parquet format:
+1. **`urls_with_dns`**:
+   - Contains the following fields:
+     - `url`: The URL being analyzed.
+     - `first_seen`: The timestamp when the URL was first observed.
+     - `TTL` (Time to Live): The time-to-live value of the DNS record.
+     - `label`: Indicates whether the URL is malware, phishing or benign.
+     - `IP addresses`: The associated IP addresses.
 
-1. **`urls_with_dns`**: Contains URLs with associated DNS data.
-2. **`urls_without_dns`**: Contains URLs without DNS data.
+2. **`urls_without_dns`**:
+   - Contains the following fields:
+     - `url`: The URL being analyzed.
+     - `first_seen`: The timestamp when the URL was first observed.
+     - `label`: Indicates whether the URL is malware, phishing or benign.
 
----
+## Usage Instructions
 
-## Loading the Dataset
-
-You can load the dataset using **pandas** in Python. Here's an example:
+To load the dataset using Python and Pandas, follow these steps:
 
 ```python
 import pandas as pd
 
-# Load a Parquet file
-df = pd.read_parquet('path_to_directory')
+# Replace 'directory' with the path to the parquet file or directory
+df = pd.DataFrame.from_parquet("directory")
